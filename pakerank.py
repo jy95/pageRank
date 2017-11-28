@@ -36,8 +36,24 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
     vector = vector / vector.sum()
     print(vector)
 
-    # TODO Power method 
-
+    # Relative error
+    epsilon = pow(10, -8)
+    print("Computing the left eigenvector of the google matrix with an error of")
+    print(epsilon)
+    # Left eigenvector of the google matrix
+    xt = vector.transpose()
+    # Full of ones line vector
+    et = np.ones(xt.shape)
+    # Vector's norms
+    norm = np.linalg.norm(xt)
+    newNorm = 0
+    # Number of nodes
+    n = xt.size
+    while abs(norm-newNorm)>epsilon:
+        norm = np.linalg.norm(xt)
+        xt = (alpha*xt*probability_matrix)+((1-alpha)/n)*et
+        newNorm = np.linalg.norm(xt)
+    print(xt)
 
 # Read the matrix from csv and transform it to numpy matrix
 def main():
