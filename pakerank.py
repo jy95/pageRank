@@ -45,14 +45,14 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
     # Full of ones line vector
     et = np.ones(xt.shape)
     # Vector's norms
-    norm = np.linalg.norm(xt)
+    norm = np.linalg.norm(xt, ord=1)
     newNorm = 0
     # Number of nodes
     n = xt.size
-    while abs(norm-newNorm)>epsilon:
-        norm = np.linalg.norm(xt)
+    while abs(newNorm-norm)/norm>epsilon:
+        norm = np.linalg.norm(xt, ord=1)
         xt = (alpha*xt*probability_matrix)+((1-alpha)/n)*et
-        newNorm = np.linalg.norm(xt)
+        newNorm = np.linalg.norm(xt, ord=1)
     print(xt)
 
 # Read the matrix from csv and transform it to numpy matrix
