@@ -30,7 +30,7 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
     transition_probability_matrix = probability_matrix.transpose()
     print(transition_probability_matrix)
 
-    print("Init vector")
+    print("Init vector (using in_degree and normalize it); Google matrix ?")
     vector = in_degree.transpose()
     # Now time to normalize this vector by the sum
     vector = vector / vector.sum()
@@ -38,21 +38,28 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
 
     # Relative error
     epsilon = pow(10, -8)
-    print("Computing the left eigenvector of the google matrix with an error of")
-    print(epsilon)
+    print("Power method iteration of the google matrix with an error of %s" % epsilon)
     # Left eigenvector of the google matrix
     xt = vector.transpose()
     # Full of ones line vector
     et = np.ones(xt.shape)
     # Vector's norms
     norm = np.linalg.norm(xt, ord=1)
-    newNorm = 0
+    new_norm = 0
     # Number of nodes
     n = xt.size
-    while abs(newNorm-norm)/norm>epsilon:
+    # counter for iteration
+    step = 1
+    while abs(new_norm-norm) / norm > epsilon:
+        print("Iteration n° %s" % step)
         norm = np.linalg.norm(xt, ord=1)
         xt = (alpha*xt*probability_matrix)+((1-alpha)/n)*et
-        newNorm = np.linalg.norm(xt, ord=1)
+        new_norm = np.linalg.norm(xt, ord=1)
+        """ Just a way to print only the first 3 iterations """
+        if step in [1, 2, 3]:
+            print(xt)
+        step = step + 1
+    print("The final PageRank score is : ")
     print(xt)
 
 # Read the matrix from csv and transform it to numpy matrix
