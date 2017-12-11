@@ -30,7 +30,7 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
     transition_probability_matrix = probability_matrix.transpose()
     print(transition_probability_matrix)
 
-    print("Init vector (using in_degree and normalize it); Google matrix ?")
+    print("Init vector (using in_degree and normalize it);")
     vector = in_degree.transpose()
     # Now time to normalize this vector by the sum
     vector = vector / vector.sum()
@@ -61,6 +61,7 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
         step = step + 1
     print("The final PageRank score is : ")
     print(xt)
+
 
 # Read the matrix from csv and transform it to numpy matrix
 def main():
