@@ -1,0 +1,104 @@
+\documentclass[a4paper, titlepage]{report}
+
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry} %marges
+\usepackage[francais]{babel}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{listings} %affichage du code
+
+\title{SINF 1250: Rapport de projet}
+\author{Maxime Dillion \and Jacques Yakoub}
+\date{24 décembre 2017}
+
+\pagestyle{headings}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Théorie}
+	
+\section{Rappel}
+\paragraph{}
+[Rappel de la partie théorique]
+	
+\section{Calcul}
+\subsection{Système d'équation sous forme matriciel}
+\[ \left( \begin{array}{cccccc}
+1 & 1 & 1 & 1 & 1 & 1 \\
+-1 & \frac{4}{7} & \frac{1}{4} & 0 & \frac{1}{2} & 0 \\
+\frac{2}{9} & -1 & \frac{1}{4} & \frac{1}{5} & \frac{1}{2} & 0 \\
+\frac{4}{9} & 0 & -1 & \frac{4}{5} & 0 & 0 \\
+\frac{1}{9} & \frac{2}{7} & \frac{5}{12} & -1 & 0 & 0 \\
+\frac{2}{9} & \frac{1}{7} & \frac{1}{12} & 0 & -1 & 0 \end{array} \right)\]
+\subsection{Système d'équation après résolution}
+\[ \left( \begin{array}{cccccc}
+1 & 0 & 0 & 0 & 0 & \frac{117}{497} \\
+0 & 1 & 0 & 0 & 0 & \frac{59}{284} \\
+0 & 0 & 1 & 0 & 0 & \frac{129}{497} \\
+0 & 0 & 0 & 1 & 0 & \frac{55}{284} \\
+0 & 0 & 0 & 0 & 1 & \frac{103}{994} \\
+0 & 0 & 0 & 0 & 0 & 0 \end{array} \right)\]
+On a donc :
+$x_{1} = \frac{117}{497}$ ;
+$x_{2} = \frac{59}{284}$ ;
+$x_{3} = \frac{129}{497}$ ;
+$x_{4} = \frac{55}{284}$ ;
+$x_{5} = \frac{103}{994}$
+
+\newpage
+
+\chapter{Implémentation}
+
+\section{Matrice d'adjacence}
+\[ \left( \begin{array}{ccccc}
+0 & 2 & 4 & 1 & 2 \\
+4 & 0 & 0 & 2 & 1  \\
+3 & 3 & 0 & 5 & 1  \\
+0 & 1 & 4 & 0 & 0  \\
+3 & 3 & 0 & 0 & 0  \end{array} \right)\] 
+
+\section{Degré entrant des noeuds}
+\[ \left( \begin{array}{ccccc}
+10 & 9 & 8 & 8 & 4  \end{array} \right)\] 
+
+\section{Matrice de probabilité de transition}
+\[ \left( \begin{array}{ccccc}
+0 & \frac{4}{7} & \frac{1}{4} & 0 & \frac{1}{2} \\
+\frac{2}{9} & 0 & \frac{1}{4} & \frac{1}{5} & \frac{1}{2}  \\
+\frac{4}{9} & 0 & 0 & \frac{4}{5} & 0  \\
+\frac{1}{9} & \frac{2}{7} & \frac{5}{12} & 0 & 0  \\
+\frac{2}{9} & \frac{1}{7} & \frac{1}{12} & 0 & 0  \end{array} \right)\] 
+
+\section{Matrice Google}
+\[ \left( \begin{array}{ccccc}
+\frac{1}{50} & \frac{11}{50} & \frac{21}{50} & \frac{3}{25} & \frac{11}{50} \\
+\frac{187}{350} & \frac{1}{50} & \frac{1}{50} & \frac{97}{350} & \frac{26}{175}  \\
+\frac{49}{200} & \frac{49}{200} & \frac{1}{50} & \frac{79}{200} & \frac{19}{200}  \\
+\frac{1}{50} & \frac{1}{5} & \frac{37}{50} & \frac{1}{50} & \frac{1}{50}  \\
+\frac{47}{100} & \frac{47}{100} & \frac{1}{50} & \frac{1}{50} & \frac{1}{50}  \end{array} \right)\] 
+
+\section{Trois premières itérations de la power method}
+\subsection{Itération n°1}
+\[ \left( \begin{array}{ccccc}
+\frac{1051}{4550} & \frac{391}{1950} & \frac{527}{1950} & \frac{191}{1050} & \frac{794}{6825}  \end{array} \right)\] 
+\subsection{Itération n°2}
+\[ \left( \begin{array}{ccccc}
+\frac{43003}{182000} & \frac{2121}{10000} & \frac{27683}{113750} & \frac{35673}{182000} & \frac{20429}{182000}  \end{array} \right)\]
+\subsection{Itération n°3}
+\[ \left( \begin{array}{ccccc}
+\frac{67623}{288557} & \frac{93767}{451224} & \frac{145393}{568750} & \frac{188765}{996486} & \frac{15789}{140000}  \end{array} \right)\] 
+
+\section{Score PageRank}
+\[ \left( \begin{array}{ccccc}
+\frac{139718}{594991} & \frac{200248}{958723} & \frac{50534}{200589} & \frac{154407}{805610} & \frac{112253}{995910}  \end{array} \right)\] 
+
+\appendix %annexes
+
+\chapter{Code complet}
+\lstinputlisting [language=Python] {pakerank.py}
+
+\end{document}
