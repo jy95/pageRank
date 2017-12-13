@@ -42,7 +42,7 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
 
     # Relative error
     epsilon = pow(10, -8)
-    print("Power method iteration (right eigenvector) of the google matrix with an error of %s" % epsilon)
+    print("Power method iteration (left eigenvector) of the google matrix with an error of %s" % epsilon)
     # Number of nodes (number of columns inside the probability matrix)
     # tuple shape : rows, columns
     n = probability_matrix.shape[1]
