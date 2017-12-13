@@ -42,12 +42,12 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
 
     # Relative error
     epsilon = pow(10, -8)
-    print("Power method iteration (left eigenvector) of the google matrix with an error of %s" % epsilon)
+    print("Power method iteration (right eigenvector) of the google matrix with an error of %s" % epsilon)
     # Number of nodes (number of columns inside the probability matrix)
     # tuple shape : rows, columns
     n = probability_matrix.shape[1]
     # vector
-    vector_google = vector.transpose()
+    vector_google = vector
     # column vector : Full of ones line vector
     et = np.ones(n)
     # Vector's norms
@@ -63,15 +63,11 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
     while abs(new_norm-norm) / norm > epsilon:
         print("Iteration n° %s" % step)
         norm = np.linalg.norm(vector_google, ord=1)
-        # storing var (for display)
-        previous_vector = vector_google
-        vector_google = vector_google * google
+        vector_google = google.transpose() * vector_google
         new_norm = np.linalg.norm(vector_google, ord=1)
         """ Just a way to print only the first 3 iterations """
         if step in [1, 2, 3]:
-            print("\t Computation details")
-            print("\t %s X Google matrix" % previous_vector)
-            print("\t Vector = %s" % vector_google)
+            print("Computed PageRank score : \n %s " % vector_google)
         step = step + 1
     print("The final PageRank score is : ")
     print(vector_google)
