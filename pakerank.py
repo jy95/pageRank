@@ -47,7 +47,7 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
     # tuple shape : rows, columns
     n = probability_matrix.shape[1]
     # vector
-    vector_google = vector
+    vector_google = vector.transpose()
     # column vector : Full of ones line vector
     et = np.ones(n)
     # Vector's norms
@@ -63,7 +63,7 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
     while abs(new_norm-norm) / norm > epsilon:
         print("Iteration n° %s" % step)
         norm = np.linalg.norm(vector_google, ord=1)
-        vector_google = google.transpose() * vector_google
+        vector_google = vector_google * google
         new_norm = np.linalg.norm(vector_google, ord=1)
         """ Just a way to print only the first 3 iterations """
         if step in [1, 2, 3]:
