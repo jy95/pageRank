@@ -1,5 +1,9 @@
 import csv
 import numpy as np
+import fractions
+# A more user-friendly way to print matrix as fractions """
+# credits to https://stackoverflow.com/a/42209716/6149867
+np.set_printoptions(formatter={'all': lambda x: str(fractions.Fraction(x).limit_denominator())})
 
 
 def pageRankScore(A: np.matrix, alpha: float = 0.9):
@@ -59,11 +63,15 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
     while abs(new_norm-norm) / norm > epsilon:
         print("Iteration n° %s" % step)
         norm = np.linalg.norm(vector_google, ord=1)
+        # storing var (for display)
+        previous_vector = vector_google
         vector_google = vector_google * google
         new_norm = np.linalg.norm(vector_google, ord=1)
         """ Just a way to print only the first 3 iterations """
         if step in [1, 2, 3]:
-            print(vector_google)
+            print("\t Computation details")
+            print("\t %s X Google matrix" % previous_vector)
+            print("\t Vector = %s" % vector_google)
         step = step + 1
     print("The final PageRank score is : ")
     print(vector_google)
