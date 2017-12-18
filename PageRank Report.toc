@@ -2,17 +2,18 @@
 \contentsline {chapter}{\numberline {1}Th\'eorie}{2}
 \contentsline {section}{\numberline {1.1}Rappel}{2}
 \contentsline {paragraph}{}{2}
+\contentsline {subsection}{\numberline {1.1.1}Syst\`eme d'\'equations lin\'eaires}{2}
 \contentsline {section}{\numberline {1.2}Calcul}{2}
 \contentsline {subsection}{\numberline {1.2.1}Syst\`eme d'\'equation sous forme matriciel}{2}
-\contentsline {subsection}{\numberline {1.2.2}Syst\`eme d'\'equation apr\`es r\'esolution}{2}
-\contentsline {chapter}{\numberline {2}Impl\'ementation}{3}
-\contentsline {section}{\numberline {2.1}Matrice d'adjacence}{3}
-\contentsline {section}{\numberline {2.2}Degr\'e entrant des noeuds}{3}
-\contentsline {section}{\numberline {2.3}Matrice de probabilit\'e de transition}{3}
-\contentsline {section}{\numberline {2.4}Matrice Google}{3}
-\contentsline {section}{\numberline {2.5}Trois premi\`eres it\'erations de la power method}{4}
-\contentsline {subsection}{\numberline {2.5.1}It\'eration n\IeC {\textdegree }1}{4}
-\contentsline {subsection}{\numberline {2.5.2}It\'eration n\IeC {\textdegree }2}{4}
-\contentsline {subsection}{\numberline {2.5.3}It\'eration n\IeC {\textdegree }3}{4}
-\contentsline {section}{\numberline {2.6}Score PageRank}{4}
-\contentsline {chapter}{\numberline {A}Code complet}{5}
+\contentsline {subsection}{\numberline {1.2.2}Syst\`eme d'\'equation apr\`es r\'esolution}{3}
+\contentsline {chapter}{\numberline {2}Impl\'ementation}{4}
+\contentsline {section}{\numberline {2.1}Matrice d'adjacence}{4}
+\contentsline {section}{\numberline {2.2}Degr\'e entrant des noeuds}{4}
+\contentsline {section}{\numberline {2.3}Matrice de probabilit\'e de transition}{4}
+\contentsline {section}{\numberline {2.4}Matrice Google}{4}
+\contentsline {section}{\numberline {2.5}Trois premi\`eres it\'erations de la power method}{5}
+\contentsline {subsection}{\numberline {2.5.1}It\'eration n\IeC {\textdegree }1}{5}
+\contentsline {subsection}{\numberline {2.5.2}It\'eration n\IeC {\textdegree }2}{5}
+\contentsline {subsection}{\numberline {2.5.3}It\'eration n\IeC {\textdegree }3}{5}
+\contentsline {section}{\numberline {2.6}Score PageRank}{5}
+\contentsline {chapter}{\numberline {A}Code complet}{6}
