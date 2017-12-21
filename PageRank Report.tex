@@ -24,8 +24,6 @@
 \chapter{Théorie}
 \section{Rappel}
 \paragraph{}
-[Rappel de la partie théorique]
-
 \subsection{Système d'équations linéaires}
 
 Avec cette méthode, la recherche du vecteur de score devient une question de vecteur propre. Ici, il serait fait le choix d'expliquer le vecteur de droite afin de faciliter les calculs dont voici son expression mathématique :
@@ -33,7 +31,7 @@ Avec cette méthode, la recherche du vecteur de score devient une question de vec
 % TODO pas familier avec les expressions math de latex ^^
 Gt * X = X
 
-Ou X étant le vecteur et Gt la transposée de la matrice google.
+Où X étant le vecteur et Gt la transposée de la matrice google.
 
 Appliquons cette formule à la situation présente :
 
@@ -65,7 +63,6 @@ x5		\\
 
 En rajoutant une ligne de 1, nous nous assurons que la somme de x1,..,xn termes doit valoir 1. Enfin, avant de pouvoir résoudre le système par des opérations matricielles pour obtenir une forme en escalier , il faut simplifier la forme présente en passant les inconnues du côté gauche de l'équation. 
 
-% TODO A finir
 \[
 \begin{bmatrix}
 \frac{-49}{50} & \frac{187}{350} & \frac{49}{200} & \frac{1}{50} & \frac{47}{100} \\ \\
@@ -75,7 +72,20 @@ En rajoutant une ligne de 1, nous nous assurons que la somme de x1,..,xn termes 
 \frac{11}{50} & \frac{26}{175} & \frac{19}{200} & \frac{1}{50} & \frac{-49}{50}
 \end{bmatrix}
 \]
+
+\subsection{Power method}
+Pour obtenir les scores PageRank, il nous faut calculer le vecteur propre de gauche correspondant à la valeur propre 1 de la matrice de google :
+
+$ x^T*G =  x^T$
 	
+Ce vecteur peut être calculé grâce à la power method, où chaque itération est définie comme telle :
+
+$ x^T(k+1) = \alpha*x^{T}(k)*P+\frac{1-\alpha}{n}*e^T $
+
+Où $x^T$ est le vecteur de scores ($x^{T}$(0) = degrés entrant dans chaque noeuds), $(1-\alpha)$ est la probabilité de téléportation, n est le nombre de noeuds et $e^T$ est la transposée d'un vecteur colonne composé de 1.
+
+Sauf dans certains cas spécifiques, cette itération sera toujours convergente et il nous suffit donc ensuite de tester si |$\| x^{T}(k)\| - \|x^{T}(k+1)\|| < \upsilon$, ou $\upsilon$ est l'erreur ($10^{-8}$ dans notre cas), pour approximer au mieux le vecteur propre et donc obtenir le plus précisément possible les scores PageRank de chaques noeuds.
+
 \section{Calcul}
 \subsection{Système d'équation sous forme matriciel}
 % & \\
@@ -130,15 +140,14 @@ $x_{5} = \frac{1572003}{13946830}$
 \end{pmatrix}
 \]
 
-% TODO je pense qu'il faut mettre la matrice de probablité P (et non Pt)
-\section{Matrice de probabilité de transition}
+\section{Matrice de probabilité}
 \[
 \begin{pmatrix} 
-0 & \frac{4}{7} & \frac{1}{4} & 0 & \frac{1}{2} \\
-\frac{2}{9} & 0 & \frac{1}{4} & \frac{1}{5} & \frac{1}{2}  \\
-\frac{4}{9} & 0 & 0 & \frac{4}{5} & 0  \\
-\frac{1}{9} & \frac{2}{7} & \frac{5}{12} & 0 & 0  \\
-\frac{2}{9} & \frac{1}{7} & \frac{1}{12} & 0 & 0
+0 & \frac{2}{9} & \frac{4}{9} & \frac{1}{9} & \frac{2}{2} \\
+\frac{4}{7} & 0 & 0 & \frac{2}{7} & \frac{1}{7}  \\
+\frac{1}{4} & \frac{1}{4} & 0 & \frac{5}{12} & \frac{1}{12}  \\
+0 & \frac{1}{5} & \frac{4}{5} & 0 & 0  \\
+\frac{1}{2} & \frac{1}{2} & 0 & 0 & 0
 \end{pmatrix}
 \]
 
