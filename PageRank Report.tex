@@ -46,13 +46,15 @@ la matrice Google. Celle-ci s'obtient de la manière suivante :
 	\item Obtention de la matrice de probabilité, en utilisant la matrice d'adjacence et les degrés entrants de chaque noeud :
 	% TODO A finir
 	\[
-		A
+		p_{ij} = \frac{w_{ij}}{w_i}
 	\]
+	Avec $1 \leq i \leq n$ et $1 \leq j \leq m$ et où W est la matrice d'adjacence et P est la matrice de probabilité
+	
 	\item Calculer la matrice Google en utilisant cette formule :
 	\[
-		(alpha*P)+((1-alpha)/n)*et
+		(\alpha * P) + \frac{1 - \alpha}{n} * e^T
 	\]
-	Où alpha est un paramètre compris entre 0 et 1, P la matrice de probabilité de transition , n étant le nombre de noeuds , et un vecteur colonne composé uniquement de 1.
+	Où $\alpha$ est un paramètre compris entre 0 et 1, P la matrice de probabilité de transition , n étant le nombre de noeuds , et un vecteur colonne composé uniquement de 1.
 \end{itemize}
 
 \subsection{Système d'équations linéaires}
@@ -60,10 +62,10 @@ la matrice Google. Celle-ci s'obtient de la manière suivante :
 Avec cette méthode, la recherche du vecteur de score devient une question de vecteur propre. Ici, il serait fait le choix d'expliquer le vecteur de droite afin de faciliter les calculs dont voici son expression mathématique :
 
 \[
-G^{t} * X = X
+G^{T} * x = x
 \]
 
-Où X étant le vecteur et Gt la transposée de la matrice google.
+Où x étant le vecteur et $G^T$ la transposée de la matrice google.
 
 Appliquons cette formule à la situation présente :
 
@@ -98,12 +100,12 @@ En rajoutant une ligne de 1, nous nous assurons que la somme de x1,..,xn termes 
 \subsection{Power method}
 Pour obtenir les scores PageRank, il nous faut calculer le vecteur propre de gauche correspondant à la valeur propre 1 de la matrice de google :
 \[
-	x^T*G =  x^T
+	x^T * G =  x^T
 \]
 
 Ce vecteur peut être calculé grâce à la power method, où chaque itération est définie comme telle :
 \[
-	x^T(k+1) = \alpha*x^{T}(k)*P+\frac{1-\alpha}{n}*e^T
+	x^T(k+1) = \alpha * x^{T}(k) * P + \frac{1-\alpha}{n} * e^T
 \]
 
 Où $x^T$ est le vecteur de scores ($x^{T}$(0) = degrés entrant dans chaque noeuds), $(1-\alpha)$ est la probabilité de téléportation, n est le nombre de noeuds et $e^T$ est la transposée d'un vecteur colonne composé de 1.
