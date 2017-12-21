@@ -3,7 +3,7 @@
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{geometry} %marges
-\usepackage[francais]{babel}
+\usepackage[french]{babel}
 \usepackage{graphicx}
 \usepackage{verbatim}
 \usepackage{listings} %affichage du code
@@ -35,6 +35,28 @@
 \paragraph{}
 [Rappel de la partie théorique]
 
+% Un rappel théorique expliquant brièvement comment calculer le vecteur de scores PageRank
+Quelque soit la méthode que nous choisissons par la suite, il faut obtenir   
+la matrice Google. Celle-ci s'obtient de la manière suivante :
+\begin{itemize}
+	\item Obtention de la matrice de probabilité, en utilisant la matrice d'adjacence et les degrés entrants de chaque noeud :
+	% TODO A finir
+	\[
+		A
+	\]
+	\item Calculer la matrice Google en utilisant cette formule :
+	\[
+		(alpha*P)+((1-alpha)/n)*et
+	\]
+	Où alpha est un paramètre compris entre 0 et 1, P la matrice de probabilité , n étant le nombre de noeuds , et un vecteur colonne composé uniquement de 1.
+\end{itemize}
+
+% TODO power method : à faire
+\subsection{Power method}
+
+% TODO de quoi t'aider
+
+% partie complete normalement
 \subsection{Système d'équations linéaires}
 
 Avec cette méthode, la recherche du vecteur de score devient une question de vecteur propre. Ici, il serait fait le choix d'expliquer le vecteur de droite afin de faciliter les calculs dont voici son expression mathématique :
@@ -75,15 +97,16 @@ x5		\\
 
 En rajoutant une ligne de 1, nous nous assurons que la somme de x1,..,xn termes doit valoir 1. Enfin, avant de pouvoir résoudre le système par des opérations matricielles pour obtenir une forme en escalier , il faut simplifier la forme présente en passant les inconnues du côté gauche de l'équation. 
 
-\[
-\begin{bmatrix}[ccccc|c]
-\frac{-49}{50} & \frac{187}{350} & \frac{49}{200} & \frac{1}{50} & \frac{47}{100} & 0\\ \\
-\frac{11}{50} & \frac{-49}{50} & \frac{49}{200} & \frac{1}{5} & \frac{47}{100} & 0\\ \\
-\frac{21}{50} & \frac{1}{50} & \frac{-49}{50} & \frac{37}{50} & \frac{1}{50} & 0 \\ \\
-\frac{3}{25} & \frac{97}{350} & \frac{79}{200} & \frac{-49}{50} & \frac{1}{50} & 0 \\ \\
-\frac{11}{50} & \frac{26}{175} & \frac{19}{200} & \frac{1}{50} & \frac{-49}{50} & 0
-\end{bmatrix}
-\]
+% Pas utile de dupliquer ce qui est mis dans le point calcul
+%\[
+%\begin{bmatrix}[ccccc|c]
+%\frac{-49}{50} & \frac{187}{350} & \frac{49}{200} & \frac{1}{50} & \frac{47}{100} & 0\\ \\
+%\frac{11}{50} & \frac{-49}{50} & \frac{49}{200} & \frac{1}{5} & \frac{47}{100} & 0\\ \\
+%\frac{21}{50} & \frac{1}{50} & \frac{-49}{50} & \frac{37}{50} & \frac{1}{50} & 0 \\ \\
+%\frac{3}{25} & \frac{97}{350} & \frac{79}{200} & \frac{-49}{50} & \frac{1}{50} & 0 \\ \\
+%\frac{11}{50} & \frac{26}{175} & \frac{19}{200} & \frac{1}{50} & \frac{-49}{50} & 0
+%\end{bmatrix}
+%\]
 	
 \section{Calcul}
 \subsection{Système d'équation sous forme matriciel}
@@ -139,8 +162,7 @@ $x_{5} = \frac{1572003}{13946830}$
 \end{pmatrix}
 \]
 
-% TODO je pense qu'il faut mettre la matrice de probablité P (et non Pt)
-\section{Matrice de probabilité de transition}
+\section{Matrice de probabilité de transition : $P^{t}$ }
 \[
 \begin{pmatrix} 
 0 & \frac{4}{7} & \frac{1}{4} & 0 & \frac{1}{2} \\
