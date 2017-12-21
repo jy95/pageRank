@@ -33,8 +33,6 @@
 \chapter{Théorie}
 \section{Rappel}
 \paragraph{}
-[Rappel de la partie théorique]
-
 % Un rappel théorique expliquant brièvement comment calculer le vecteur de scores PageRank
 Quelque soit la méthode que nous choisissons par la suite, il faut obtenir   
 la matrice Google. Celle-ci s'obtient de la manière suivante :
@@ -99,12 +97,14 @@ En rajoutant une ligne de 1, nous nous assurons que la somme de x1,..,xn termes 
 
 \subsection{Power method}
 Pour obtenir les scores PageRank, il nous faut calculer le vecteur propre de gauche correspondant à la valeur propre 1 de la matrice de google :
-
-$ x^T*G =  x^T$
+\[
+	x^T*G =  x^T
+\]
 
 Ce vecteur peut être calculé grâce à la power method, où chaque itération est définie comme telle :
-
-$ x^T(k+1) = \alpha*x^{T}(k)*P+\frac{1-\alpha}{n}*e^T $
+\[
+	x^T(k+1) = \alpha*x^{T}(k)*P+\frac{1-\alpha}{n}*e^T
+\]
 
 Où $x^T$ est le vecteur de scores ($x^{T}$(0) = degrés entrant dans chaque noeuds), $(1-\alpha)$ est la probabilité de téléportation, n est le nombre de noeuds et $e^T$ est la transposée d'un vecteur colonne composé de 1.
 
@@ -116,7 +116,7 @@ Sauf dans certains cas spécifiques, cette itération sera toujours convergente et
 % & \\
 \[
 \begin{pmatrix}[ccccc|c]
-1 & 1 & 1 & 1 & 1 & 1 \\ \\
+1 & 1 & 1 & 1 & 1 & 1 \\ 
 \frac{-49}{50} & \frac{187}{350} & \frac{49}{200} & \frac{1}{50} & \frac{47}{100} & 0 \\ \\
 \frac{11}{50} & \frac{-49}{50} & \frac{49}{200} & \frac{1}{5} & \frac{47}{100} & 0 \\ \\
 \frac{21}{50} & \frac{1}{50} & \frac{-49}{50} & \frac{37}{50} & \frac{1}{50} & 0 \\ \\
@@ -143,9 +143,8 @@ $x_{3} = \frac{3332146709283619}{1.32265796170871e+16}$ ;
 $x_{4} = \frac{534623}{2789366}$ ;
 $x_{5} = \frac{1572003}{13946830}$
 
-\newpage
-
-\chapter{Implémentation}
+% hack for page skip https://tex.stackexchange.com/a/24068/129702
+{\let\clearpage\relax \chapter{Implémentation}}
 
 \section{Matrice d'adjacence}
 \[
@@ -179,10 +178,10 @@ $x_{5} = \frac{1572003}{13946830}$
 \section{Matrice Google}
 \[
 \begin{pmatrix} 
-\frac{1}{50} & \frac{11}{50} & \frac{21}{50} & \frac{3}{25} & \frac{11}{50} \\
-\frac{187}{350} & \frac{1}{50} & \frac{1}{50} & \frac{97}{350} & \frac{26}{175}  \\
-\frac{49}{200} & \frac{49}{200} & \frac{1}{50} & \frac{79}{200} & \frac{19}{200}  \\
-\frac{1}{50} & \frac{1}{5} & \frac{37}{50} & \frac{1}{50} & \frac{1}{50}  \\
+\frac{1}{50} & \frac{11}{50} & \frac{21}{50} & \frac{3}{25} & \frac{11}{50} \\ \\
+\frac{187}{350} & \frac{1}{50} & \frac{1}{50} & \frac{97}{350} & \frac{26}{175}  \\ \\
+\frac{49}{200} & \frac{49}{200} & \frac{1}{50} & \frac{79}{200} & \frac{19}{200}  \\ \\
+\frac{1}{50} & \frac{1}{5} & \frac{37}{50} & \frac{1}{50} & \frac{1}{50}  \\ \\
 \frac{47}{100} & \frac{47}{100} & \frac{1}{50} & \frac{1}{50} & \frac{1}{50}
 \end{pmatrix}
 \]

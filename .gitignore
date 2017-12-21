@@ -6,3 +6,4 @@ ve/
 *.log
 *.synctex.gz
 *.aux
+*.toc
