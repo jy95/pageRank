@@ -16,6 +16,12 @@
 
 \pagestyle{headings}
 
+% custom thing for chapter 
+
+\titleformat{\chapter}[block]
+{\normalfont\huge\bfseries}{\thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+
 % Custom thing for matrix : http://texblog.net/latex-archive/maths/amsmath-matrix/
 
 \makeatletter
@@ -46,15 +52,9 @@ la matrice Google. Celle-ci s'obtient de la manière suivante :
 	\[
 		(alpha*P)+((1-alpha)/n)*et
 	\]
-	Où alpha est un paramètre compris entre 0 et 1, P la matrice de probabilité , n étant le nombre de noeuds , et un vecteur colonne composé uniquement de 1.
+	Où alpha est un paramètre compris entre 0 et 1, P la matrice de probabilité de transition , n étant le nombre de noeuds , et un vecteur colonne composé uniquement de 1.
 \end{itemize}
 
-% TODO power method : à faire
-\subsection{Power method}
-
-% TODO de quoi t'aider
-
-% partie complete normalement
 \subsection{Système d'équations linéaires}
 
 Avec cette méthode, la recherche du vecteur de score devient une question de vecteur propre. Ici, il serait fait le choix d'expliquer le vecteur de droite afin de faciliter les calculs dont voici son expression mathématique :
@@ -143,8 +143,7 @@ $x_{3} = \frac{3332146709283619}{1.32265796170871e+16}$ ;
 $x_{4} = \frac{534623}{2789366}$ ;
 $x_{5} = \frac{1572003}{13946830}$
 
-% hack for page skip https://tex.stackexchange.com/a/24068/129702
-{\let\clearpage\relax \chapter{Implémentation}}
+\chapter{Implémentation}
 
 \section{Matrice d'adjacence}
 \[
@@ -164,14 +163,15 @@ $x_{5} = \frac{1572003}{13946830}$
 \end{pmatrix}
 \]
 
-\section{Matrice de probabilité de transition : $P^{t}$ }
+\section{Matrice de probabilité de transition}
+% confirmé par http://www.eng.buffalo.edu/~kofke/ce530/Lectures/Lecture8/sld004.htm
 \[
 \begin{pmatrix} 
-0 & \frac{4}{7} & \frac{1}{4} & 0 & \frac{1}{2} \\
-\frac{2}{9} & 0 & \frac{1}{4} & \frac{1}{5} & \frac{1}{2}  \\
-\frac{4}{9} & 0 & 0 & \frac{4}{5} & 0  \\
-\frac{1}{9} & \frac{2}{7} & \frac{5}{12} & 0 & 0  \\
-\frac{2}{9} & \frac{1}{7} & \frac{1}{12} & 0 & 0
+0 & \frac{2}{9} & \frac{4}{9} & \frac{1}{9} & \frac{2}{9} \\ \\
+\frac{4}{7} & 0 & 0 & \frac{2}{7} & \frac{1}{7} \\ \\
+\frac{1}{4} & \frac{1}{4} & 0 & \frac{5}{12} & \frac{1}{12} \\ \\
+0 & \frac{1}{5} & \frac{4}{5} & 0 & 0 \\ \\ 
+\frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 
 \end{pmatrix}
 \]
 

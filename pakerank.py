@@ -1,7 +1,7 @@
 import csv
 import numpy as np
 import fractions
-# A more user-friendly way to print matrix as fractions """
+# A more user-friendly way to print matrix as fractions
 # credits to https://stackoverflow.com/a/42209716/6149867
 np.set_printoptions(formatter={'all': lambda x: str(fractions.Fraction(x).limit_denominator())})
 
@@ -9,13 +9,10 @@ np.set_printoptions(formatter={'all': lambda x: str(fractions.Fraction(x).limit_
 def pageRankScore(A: np.matrix, alpha: float = 0.9):
     # without astype : numpy thinks it is a matrix of string
     adj_matrix = A.astype(np.int)
-    print("Starting the program : Matrix of shape %s with alpha %f " % (A.shape, alpha))
-    print(adj_matrix)
+    print("Starting the program : Matrix of shape %s with alpha %f \n %s" % (A.shape, alpha, adj_matrix))
     # Vector of the sum for each column
     in_degree = adj_matrix.sum(axis=0)
-    print("indegree of each node")
-    print(in_degree)
-    print("Computing the probability matrix")
+    print("indegree of each node \n %s" % in_degree)
 
     # help us to not call sum multiple time when we will modify the matrix
     out_degree = adj_matrix.sum(axis=1).getA1()
@@ -28,11 +25,7 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
         counter += 1
 
     probability_matrix = np.matrix(probability_matrix, np.float)
-    print(probability_matrix)
-
-    print("Computing the transition-probability matrix Pt")
-    transition_probability_matrix = probability_matrix.transpose()
-    print(transition_probability_matrix)
+    print("Computing the transition-probability matrix \n %s" % probability_matrix)
 
     print("Init vector (using in_degree and normalize it);")
     vector = in_degree.transpose()
@@ -44,8 +37,7 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
     epsilon = pow(10, -8)
     print("Power method iteration (left eigenvector) of the google matrix with an error of %s" % epsilon)
     # Number of nodes (number of columns inside the probability matrix)
-    # tuple shape : rows, columns
-    n = probability_matrix.shape[1]
+    n = probability_matrix.shape[1]  # tuple shape : rows, columns
     # vector
     vector_google = vector.transpose()
     # column vector : Full of ones line vector
@@ -61,16 +53,15 @@ def pageRankScore(A: np.matrix, alpha: float = 0.9):
     # counter for iteration
     step = 1
     while abs(new_norm-norm) / norm > epsilon:
-        print("Iteration n° %s" % step)
+        print("\t Iteration n° %s" % step)
         norm = np.linalg.norm(vector_google, ord=1)
         vector_google = vector_google * google
         new_norm = np.linalg.norm(vector_google, ord=1)
         """ Just a way to print only the first 3 iterations """
         if step in [1, 2, 3]:
-            print("Computed PageRank score : \n %s " % vector_google)
+            print("\t\t Computed PageRank score : \n \t\t %s " % vector_google)
         step = step + 1
-    print("The final PageRank score is : ")
-    print(vector_google)
+    print("The final PageRank score is : \n \t %s " % vector_google)
 
 
 # Read the matrix from csv and transform it to numpy matrix
@@ -78,15 +69,11 @@ def main():
 
     matrix = []
     cr = csv.reader(open("adjacenceMatrix.csv", "r"))
-
     for i, val in enumerate(cr):
         matrix.append(val)
 
     adj_matrix_np = np.matrix(matrix)
     pageRankScore(A=adj_matrix_np)
-
-    # Call with a custom alpha
-    # pageRankScore(A=adj_matrix_np,alpha=0.8)
 
 
 if __name__ == "__main__": main()
