@@ -16,6 +16,15 @@
 
 \pagestyle{headings}
 
+% Custom thing for matrix : http://texblog.net/latex-archive/maths/amsmath-matrix/
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{#1}}
+\makeatother
+
 \begin{document}
 
 \maketitle
@@ -28,8 +37,9 @@
 
 Avec cette méthode, la recherche du vecteur de score devient une question de vecteur propre. Ici, il serait fait le choix d'expliquer le vecteur de droite afin de faciliter les calculs dont voici son expression mathématique :
 
-% TODO pas familier avec les expressions math de latex ^^
-Gt * X = X
+\[
+G^{t} * X = X
+\]
 
 Où X étant le vecteur et Gt la transposée de la matrice google.
 
@@ -64,12 +74,12 @@ x5		\\
 En rajoutant une ligne de 1, nous nous assurons que la somme de x1,..,xn termes doit valoir 1. Enfin, avant de pouvoir résoudre le système par des opérations matricielles pour obtenir une forme en escalier , il faut simplifier la forme présente en passant les inconnues du côté gauche de l'équation. 
 
 \[
-\begin{bmatrix}
-\frac{-49}{50} & \frac{187}{350} & \frac{49}{200} & \frac{1}{50} & \frac{47}{100} \\ \\
-\frac{11}{50} & \frac{-49}{50} & \frac{49}{200} & \frac{1}{5} & \frac{47}{100} \\ \\
-\frac{21}{50} & \frac{1}{50} & \frac{-49}{50} & \frac{37}{50} & \frac{1}{50} \\ \\
-\frac{3}{25} & \frac{97}{350} & \frac{79}{200} & \frac{-49}{50} & \frac{1}{50} \\ \\
-\frac{11}{50} & \frac{26}{175} & \frac{19}{200} & \frac{1}{50} & \frac{-49}{50}
+\begin{bmatrix}[ccccc|c]
+\frac{-49}{50} & \frac{187}{350} & \frac{49}{200} & \frac{1}{50} & \frac{47}{100} & 0\\ \\
+\frac{11}{50} & \frac{-49}{50} & \frac{49}{200} & \frac{1}{5} & \frac{47}{100} & 0\\ \\
+\frac{21}{50} & \frac{1}{50} & \frac{-49}{50} & \frac{37}{50} & \frac{1}{50} & 0 \\ \\
+\frac{3}{25} & \frac{97}{350} & \frac{79}{200} & \frac{-49}{50} & \frac{1}{50} & 0 \\ \\
+\frac{11}{50} & \frac{26}{175} & \frac{19}{200} & \frac{1}{50} & \frac{-49}{50} & 0
 \end{bmatrix}
 \]
 
@@ -90,7 +100,7 @@ Sauf dans certains cas spécifiques, cette itération sera toujours convergente et
 \subsection{Système d'équation sous forme matriciel}
 % & \\
 \[
-\begin{pmatrix} 
+\begin{pmatrix}[ccccc|c]
 1 & 1 & 1 & 1 & 1 & 1 \\ \\
 \frac{-49}{50} & \frac{187}{350} & \frac{49}{200} & \frac{1}{50} & \frac{47}{100} & 0 \\ \\
 \frac{11}{50} & \frac{-49}{50} & \frac{49}{200} & \frac{1}{5} & \frac{47}{100} & 0 \\ \\
@@ -102,7 +112,7 @@ Sauf dans certains cas spécifiques, cette itération sera toujours convergente et
 
 \subsection{Système d'équation après résolution}
 \[
-\begin{pmatrix} 
+\begin{pmatrix}[ccccc|c] 
 1 & 0 & 0 & 0 & 0 & \frac{278338891485003}{1185309949623550} \\ \\
 0 & 1 & 0 & 0 & 0 & \frac{1574961688097759}{7540409867060228} \\ \\
 0 & 0 & 1 & 0 & 0 & \frac{3332146709283619}{1.32265796170871e+16} \\ \\

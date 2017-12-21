@@ -1,3 +1,8 @@
 
 .idea/
 ve/
+
+# latex stuff
+*.log
+*.synctex.gz
+*.aux
