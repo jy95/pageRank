@@ -97,16 +97,19 @@ x5		\\
 
 En rajoutant une ligne de 1, nous nous assurons que la somme de x1,..,xn termes doit valoir 1. Enfin, avant de pouvoir résoudre le système par des opérations matricielles pour obtenir une forme en escalier , il faut simplifier la forme présente en passant les inconnues du côté gauche de l'équation. 
 
-% Pas utile de dupliquer ce qui est mis dans le point calcul
-%\[
-%\begin{bmatrix}[ccccc|c]
-%\frac{-49}{50} & \frac{187}{350} & \frac{49}{200} & \frac{1}{50} & \frac{47}{100} & 0\\ \\
-%\frac{11}{50} & \frac{-49}{50} & \frac{49}{200} & \frac{1}{5} & \frac{47}{100} & 0\\ \\
-%\frac{21}{50} & \frac{1}{50} & \frac{-49}{50} & \frac{37}{50} & \frac{1}{50} & 0 \\ \\
-%\frac{3}{25} & \frac{97}{350} & \frac{79}{200} & \frac{-49}{50} & \frac{1}{50} & 0 \\ \\
-%\frac{11}{50} & \frac{26}{175} & \frac{19}{200} & \frac{1}{50} & \frac{-49}{50} & 0
-%\end{bmatrix}
-%\]
+\subsection{Power method}
+Pour obtenir les scores PageRank, il nous faut calculer le vecteur propre de gauche correspondant à la valeur propre 1 de la matrice de google :
+
+$ x^T*G =  x^T$
+
+Ce vecteur peut être calculé grâce à la power method, où chaque itération est définie comme telle :
+
+$ x^T(k+1) = \alpha*x^{T}(k)*P+\frac{1-\alpha}{n}*e^T $
+
+Où $x^T$ est le vecteur de scores ($x^{T}$(0) = degrés entrant dans chaque noeuds), $(1-\alpha)$ est la probabilité de téléportation, n est le nombre de noeuds et $e^T$ est la transposée d'un vecteur colonne composé de 1.
+
+Sauf dans certains cas spécifiques, cette itération sera toujours convergente et il nous suffit donc ensuite de tester si |$\| x^{T}(k)\| - \|x^{T}(k+1)\|| < \upsilon$, ou $\upsilon$ est l'erreur ($10^{-8}$ dans notre cas), pour approximer au mieux le vecteur propre et donc obtenir le plus précisément possible les scores PageRank de chaques noeuds.
+
 	
 \section{Calcul}
 \subsection{Système d'équation sous forme matriciel}
