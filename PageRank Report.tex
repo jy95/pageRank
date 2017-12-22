@@ -44,11 +44,10 @@ Quelque soit la méthode que nous choisissons par la suite, il faut obtenir
 la matrice Google. Celle-ci s'obtient de la manière suivante :
 \begin{itemize}
 	\item Obtention de la matrice de probabilité, en utilisant la matrice d'adjacence et les degrés entrants de chaque noeud :
-	% TODO A finir
 	\[
-		p_{ij} = \frac{w_{ij}}{w_i}
+		p_{ij} = \frac{w_{ij}}{w_i.}
 	\]
-	Avec $1 \leq i \leq n$ et $1 \leq j \leq m$ et où W est la matrice d'adjacence et P est la matrice de probabilité
+	Avec $1 \leq i \leq n$ et $1 \leq j \leq m$ et où W est la matrice d'adjacence, P est la matrice de probabilité et $w_{i.}$ = $\sum_{i=1}^{m} w_{ij}$
 	
 	\item Calculer la matrice Google en utilisant cette formule :
 	\[
